@@ -1,10 +1,22 @@
 // import logo from './logo.svg';
 import "./Board.css";
+import Card from "./Card";
 
 function Board() {
   return (
     <>
-      <h2>Dentro do componente Board</h2>
+      <div className="board">
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+        <Card />
+      </div>
     </>
   );
 }

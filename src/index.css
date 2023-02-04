@@ -1,0 +1,15 @@
+:root {
+  --black: #000;
+  --gray: #333;
+  --purple: #6e328b;
+  --white: #ffffff;
+  --white-2: #fafafa;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.title {
+  text-align: center;
+}
