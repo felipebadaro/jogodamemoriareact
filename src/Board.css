@@ -1,15 +1,7 @@
 .board {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 1fr 1fr;
-  grid-row-gap: 30px;
-  grid-column-gap: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
   margin: 0 auto;
-  max-width: 1280px;
-}
-
-@media only screen and (min-width: 768px) {
-  .board {
-    grid-template-columns: repeat(5, 1fr);
-  }
+  max-width: 1366px;
 }

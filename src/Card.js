@@ -2,9 +2,17 @@
 import "./Card.css";
 
 function Card() {
+  const clickHandler = () => {
+    alert("Clicked!");
+    flip();
+  };
+
+  const flip = () => {
+    alert("Fliped!");
+  };
   return (
     <>
-      <div className="flip-card">
+      <div className="flip-card" onClick={() => clickHandler()}>
         <div className="flip-card-inner">
           <div className="flip-card-front">
             <img
