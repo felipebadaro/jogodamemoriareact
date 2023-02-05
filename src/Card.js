@@ -1,7 +1,7 @@
 // import logo from './logo.svg';
 import "./Card.css";
 
-function Card() {
+function Card({ id, img, description }) {
   const clickHandler = () => {
     alert("Clicked!");
     flip();
@@ -12,7 +12,7 @@ function Card() {
   };
   return (
     <>
-      <div className="flip-card" onClick={() => clickHandler()}>
+      <div id={id} className="flip-card" onClick={() => clickHandler()}>
         <div className="flip-card-inner">
           <div className="flip-card-front">
             <img
@@ -22,11 +22,8 @@ function Card() {
             />
           </div>
           <div className="flip-card-back">
-            <img
-              src="https://www.w3schools.com/howto/img_avatar.png"
-              alt="Avatar"
-            />
-            <span className="description">Nome qualquer</span>
+            <img src={img} alt="Avatar" />
+            <span className="description">{description}</span>
           </div>
         </div>
       </div>
