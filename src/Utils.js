@@ -8,3 +8,12 @@ export const shuffle = (array) => {
 
   return newArray;
 };
+
+export const removeElemetFromArray = (list, item) => {
+  var newList = list;
+  var index = newList.indexOf(item);
+  if (index !== -1) {
+    delete newList[index];
+  }
+  return newList;
+};

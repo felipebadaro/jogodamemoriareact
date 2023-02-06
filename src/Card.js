@@ -1,44 +1,21 @@
 // import logo from './logo.svg';
 import { useState, useEffect } from "react";
 import "./Card.css";
-import { maxFlippedCards } from "./Config.js";
+import { removeElemetFromArray } from "./Utils";
 
-function Card({
-  id,
-  img,
-  description,
-  flippedCards,
-  matchingCards,
-  setFlippedCards,
-}) {
-  const [flipStatus, setFlipStatus] = useState("");
+function Card({ id, img, description, cardStatus, addFlippedCard }) {
+  // let cardStatus = flippedCards.includes(id) ? "flip" : "";
+  // console.log("cardStatus", cardStatus);
 
-  useEffect(() => {
-    console.log("observando o flippedcards");
-    flippedCards.length >= maxFlippedCards
-      ? console.log("flippedcards chegou no maximo")
-      : console.log("flippedcards ainda nao chegou no maximo");
-  }, [flippedCards]);
-
-  const clickHandler = (e) => {
-    const cardText = e.target.nextElementSibling.children[1].innerHTML;
-    console.log("flippedCards.length", flippedCards.length);
-    if (flippedCards.length < maxFlippedCards) {
-      flip();
-      let newFlipperCards = [...flippedCards, cardText];
-      setFlippedCards(newFlipperCards);
-    }
-  };
-
-  const flip = () => {
-    setFlipStatus(flipStatus ? "" : "flip");
+  const clickHandler = () => {
+    addFlippedCard((prevFlippedCards) => [...prevFlippedCards, id]);
   };
 
   return (
     <>
       <div id={id} className="flip-card">
-        <div className={`flip-card-inner ${flipStatus}`}>
-          <div className="flip-card-front" onClick={clickHandler}>
+        <div className={`flip-card-inner ${cardStatus}`}>
+          <div className="flip-card-front" onClick={() => clickHandler()}>
             <img
               className="logo"
               src="https://pebmed.com.br/wp-content/themes/Pebmed-Theme/sahifa/images/logo-pebmed.png"

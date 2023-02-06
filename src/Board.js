@@ -6,66 +6,90 @@ import { cardList } from "./CardList";
 import { shuffle } from "./Utils";
 import { useEffect, useState } from "react";
 import { maxFlippedCards } from "./Config";
+import { isCompositeComponent } from "react-dom/test-utils";
 
 function Board() {
-  // const [originalCards, setOriginalCards] = useState(cardList);
   const [sortedCards, setSortedCards] = useState(cardList);
   const [flippedCards, setFlippedCards] = useState([]);
-  const [matchingCards, setMatchingCards] = useState([]);
+  // const [matchingCards, setMatchingCards] = useState([]);
+  // const [lastCardFlipped, setLastCardFlipped] = useState("");
 
   useEffect(() => {
     setSortedCards(shuffle(cardList));
   }, []);
 
   useEffect(() => {
-    if (flippedCards.length === maxFlippedCards) {
+    console.log(flippedCards);
+    if (flippedCards.length == maxFlippedCards) {
       handleChoice();
-    } else {
-      return;
     }
   }, [flippedCards]);
 
-  const compareCards = () => flippedCards[0] === flippedCards[1];
-
   const handleChoice = () => {
-    console.log("dentro do handleChoice");
-    console.log("Os 2 cards são iguais?", compareCards());
-    if (!compareCards()) {
-      handleMistake();
-    } else {
-      handleMatching();
-    }
-    // setFlippedCards([]);
+    setTimeout(() => {
+      compare() ? handleMatching() : handleError();
+      compare();
+    }, 1000);
+  };
+
+  const handleError = () => {
+    console.log("Entrei no handle Error!");
+    setFlippedCards([]);
   };
 
   const handleMatching = () => {
-    // let newMatchingCards = matchingCards;
-    // newMatchingCards.push(flippedCards[0]);
-    // setMatchingCards(newMatchingCards);
-    //desliga o click nos 2
+    console.log("Entrei no handle Matching!");
   };
 
-  const handleMistake = () => {
-    console.log("dentro do handleMistake");
-    // setFlipStatus(flipStatus ? "" : "flip");
+  const compare = () => {
+    const firstElement = flippedCards[0];
+    const secondElement = flippedCards[1];
+    console.log(
+      "flippedCards[0] description",
+      sortedCards[firstElement].description
+    );
+    console.log(
+      "flippedCards[1] description",
+      sortedCards[secondElement].description
+    );
+    return (
+      sortedCards[firstElement].description ===
+      sortedCards[secondElement].description
+    );
   };
 
-  const handleEndGame = () => console.log("Endgame!");
+  const renderCard = (id) => {
+    return (
+      <Card
+        key={id}
+        id={id}
+        img={sortedCards[id].img}
+        description={sortedCards[id].description}
+        cardStatus={flippedCards.includes(id) ? "flip" : ""}
+        addFlippedCard={setFlippedCards}
+        // onClick={() => clickHandler(sortedCards[id].description)}
+      />
+    );
+  };
 
   return (
     <>
       <div className="board">
-        {sortedCards.map((card) => {
+        {/* {sortedCards.map((card) => {
           return (
             <Card
               key={card.id}
               {...card}
               flippedCards={flippedCards}
-              matchingCards={matchingCards}
-              setFlippedCards={setFlippedCards}
-            ></Card>
+              onClick={() => clickHandler(card.id)}
+            />
           );
-        })}
+        })} */}
+
+        {renderCard(0)}
+        {renderCard(1)}
+        {renderCard(3)}
+        {renderCard(4)}
       </div>
       <Menu />
     </>
