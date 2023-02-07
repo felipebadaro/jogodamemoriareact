@@ -25,6 +25,12 @@
   text-decoration: none;
   text-shadow: 0px 1px 0px #9b14b3;
 }
+@media only screen and (max-width: 600px) {
+  .resetBtn {
+    font-size: 11px;
+  }
+}
+
 .resetBtn:hover {
   background: linear-gradient(to bottom, #a20dbd 5%, #c123de 100%);
   background-color: #a20dbd;

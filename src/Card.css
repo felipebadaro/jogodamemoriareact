@@ -7,6 +7,13 @@
   width: 200px;
 }
 
+@media only screen and (max-width: 600px) {
+  .flip-card {
+    height: 70px;
+    width: 70px;
+  }
+}
+
 .flip-card img {
   width: 100%;
 }
@@ -63,6 +70,12 @@
   position: absolute;
   text-align: center;
   width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .flip-card-back .description {
+    font-size: 7px;
+  }
 }
 
 .flip-card-front .logo {
