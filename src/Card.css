@@ -2,9 +2,9 @@
   background-color: transparent;
   border-radius: 50%;
   cursor: pointer;
-  width: 200px;
   height: 200px;
   perspective: 1000px;
+  width: 200px;
 }
 
 .flip-card img {
@@ -49,6 +49,10 @@
   background-color: #2980b9;
   color: white;
   transform: rotateY(180deg);
+}
+
+.flip-card-back img {
+  height: 100%;
 }
 
 .flip-card-back .description {

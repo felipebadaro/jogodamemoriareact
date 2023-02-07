@@ -62,8 +62,10 @@ function Board() {
   const handleReset = () => {
     setFlippedCards([]);
     setMatchingCards([]);
-    setSortedCards(shuffle(cardList));
     setTextMessage("");
+    setTimeout(() => {
+      setSortedCards(shuffle(cardList));
+    }, 500);
   };
 
   const renderCard = (id) => {
