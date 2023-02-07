@@ -52,11 +52,11 @@ export const cardList = [
   {
     id: 10,
     img: "./renata1.webp",
-    description: "Renata 'com sono'",
+    description: "Renata 'LMS no Portal'",
   },
   {
     id: 11,
     img: "./renata1.webp",
-    description: "Renata 'com sono'",
+    description: "Renata 'LMS no Portal'",
   },
 ];
