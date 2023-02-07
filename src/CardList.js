@@ -1,12 +1,12 @@
 export const cardList = [
   {
     id: 0,
-    img: "./felipe1.png",
+    img: "./felipe1.webp",
     description: "Badaróverso",
   },
   {
     id: 1,
-    img: "./felipe2.png",
+    img: "./felipe2.webp",
     description: "Badaróverso",
   },
   {
