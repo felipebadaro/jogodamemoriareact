@@ -1,14 +1,23 @@
 // import logo from './logo.svg';
 import { useState, useEffect } from "react";
 import "./Card.css";
+import { maxFlippedCards } from "./Config";
 import { removeElemetFromArray } from "./Utils";
 
-function Card({ id, img, description, cardStatus, addFlippedCard }) {
+function Card({
+  id,
+  img,
+  description,
+  cardStatus,
+  flippedCards,
+  addFlippedCard,
+}) {
   // let cardStatus = flippedCards.includes(id) ? "flip" : "";
   // console.log("cardStatus", cardStatus);
 
   const clickHandler = () => {
-    addFlippedCard((prevFlippedCards) => [...prevFlippedCards, id]);
+    if (flippedCards.length < maxFlippedCards)
+      addFlippedCard((prevFlippedCards) => [...prevFlippedCards, id]);
   };
 
   return (

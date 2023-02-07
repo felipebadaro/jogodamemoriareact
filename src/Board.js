@@ -2,60 +2,68 @@
 import "./Board.css";
 import Card from "./Card";
 import Menu from "./Menu";
+import Message from "./Message";
 import { cardList } from "./CardList";
 import { shuffle } from "./Utils";
 import { useEffect, useState } from "react";
 import { maxFlippedCards } from "./Config";
-import { isCompositeComponent } from "react-dom/test-utils";
 
 function Board() {
   const [sortedCards, setSortedCards] = useState(cardList);
   const [flippedCards, setFlippedCards] = useState([]);
-  // const [matchingCards, setMatchingCards] = useState([]);
-  // const [lastCardFlipped, setLastCardFlipped] = useState("");
+  const [matchingCards, setMatchingCards] = useState([]);
+  const [textMessage, setTextMessage] = useState("");
 
   useEffect(() => {
     setSortedCards(shuffle(cardList));
   }, []);
 
   useEffect(() => {
-    console.log(flippedCards);
     if (flippedCards.length == maxFlippedCards) {
       handleChoice();
     }
   }, [flippedCards]);
 
+  useEffect(() => {
+    if (matchingCards.length == sortedCards.length) handleEndGame();
+  }, [matchingCards]);
+
   const handleChoice = () => {
     setTimeout(() => {
-      compare() ? handleMatching() : handleError();
-      compare();
+      handleCompare() ? handleMatching() : handleMistake();
+      handleCompare();
     }, 1000);
   };
 
-  const handleError = () => {
-    console.log("Entrei no handle Error!");
+  const handleEndGame = () => {
+    setTextMessage("Você ganhou!");
+  };
+
+  const handleMistake = () => {
     setFlippedCards([]);
   };
 
   const handleMatching = () => {
-    console.log("Entrei no handle Matching!");
+    let newMatchingCards = matchingCards;
+    newMatchingCards = newMatchingCards.concat(flippedCards);
+    setMatchingCards(newMatchingCards);
+    setFlippedCards([]);
   };
 
-  const compare = () => {
+  const handleCompare = () => {
     const firstElement = flippedCards[0];
     const secondElement = flippedCards[1];
-    console.log(
-      "flippedCards[0] description",
-      sortedCards[firstElement].description
-    );
-    console.log(
-      "flippedCards[1] description",
-      sortedCards[secondElement].description
-    );
     return (
       sortedCards[firstElement].description ===
       sortedCards[secondElement].description
     );
+  };
+
+  const handleReset = () => {
+    setFlippedCards([]);
+    setMatchingCards([]);
+    setSortedCards(shuffle(cardList));
+    setTextMessage("");
   };
 
   const renderCard = (id) => {
@@ -65,9 +73,11 @@ function Board() {
         id={id}
         img={sortedCards[id].img}
         description={sortedCards[id].description}
-        cardStatus={flippedCards.includes(id) ? "flip" : ""}
+        cardStatus={
+          flippedCards.includes(id) || matchingCards.includes(id) ? "flip" : ""
+        }
+        flippedCards={flippedCards}
         addFlippedCard={setFlippedCards}
-        // onClick={() => clickHandler(sortedCards[id].description)}
       />
     );
   };
@@ -88,10 +98,19 @@ function Board() {
 
         {renderCard(0)}
         {renderCard(1)}
+        {renderCard(2)}
         {renderCard(3)}
         {renderCard(4)}
+        {renderCard(5)}
+        {renderCard(6)}
+        {renderCard(7)}
+        {renderCard(8)}
+        {renderCard(9)}
+        {renderCard(10)}
+        {renderCard(11)}
       </div>
-      <Menu />
+      <Menu reset={handleReset} />
+      <Message text={textMessage} />
     </>
   );
 }

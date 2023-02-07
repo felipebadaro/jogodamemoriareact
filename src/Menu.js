@@ -1,12 +1,20 @@
 // import logo from './logo.svg';
 import "./Menu.css";
 
-function Menu() {
+function Menu({ reset }) {
+  const handleClick = () => {
+    reset();
+  };
   return (
     <>
       <div className="menu">
-        <button type="button">Iniciar</button>
-        <button type="button">Terminar</button>
+        <button
+          type="button"
+          className="resetBtn"
+          onClick={() => handleClick()}
+        >
+          Reiniciar
+        </button>
       </div>
     </>
   );
