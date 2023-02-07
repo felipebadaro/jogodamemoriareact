@@ -86,6 +86,7 @@ function Board() {
 
   return (
     <>
+      <Message text={textMessage} />
       <div className="board">
         {/* {sortedCards.map((card) => {
           return (
@@ -112,7 +113,6 @@ function Board() {
         {renderCard(11)}
       </div>
       <Menu reset={handleReset} />
-      <Message text={textMessage} />
     </>
   );
 }
