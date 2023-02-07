@@ -19,13 +19,13 @@ function Board() {
   }, []);
 
   useEffect(() => {
-    if (flippedCards.length == maxFlippedCards) {
+    if (flippedCards.length === maxFlippedCards) {
       handleChoice();
     }
   }, [flippedCards]);
 
   useEffect(() => {
-    if (matchingCards.length == sortedCards.length) handleEndGame();
+    if (matchingCards.length === sortedCards.length) handleEndGame();
   }, [matchingCards]);
 
   const handleChoice = () => {
