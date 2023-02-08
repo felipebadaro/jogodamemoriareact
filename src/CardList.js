@@ -32,12 +32,12 @@ export const cardList = [
   {
     id: 6,
     img: "/robson1.webp",
-    description: "Robson 'a caju'",
+    description: "Robson 'acaju'",
   },
   {
     id: 7,
     img: "robson1.webp",
-    description: "Robson 'a caju'",
+    description: "Robson 'acaju'",
   },
   {
     id: 8,
@@ -52,11 +52,11 @@ export const cardList = [
   {
     id: 10,
     img: "./renata1.webp",
-    description: "Renata 'LMS no Portal'",
+    description: "Renata 'Pós off hacking vibe'",
   },
   {
     id: 11,
     img: "./renata1.webp",
-    description: "Renata 'LMS no Portal'",
+    description: "Renata 'Pós off hacking vibe'",
   },
 ];
