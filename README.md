@@ -1,5 +1,7 @@
 # Getting Started with Create React App
 
+Jogo da memória com imagens dos meus colegas trabalho :)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
